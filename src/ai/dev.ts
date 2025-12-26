@@ -1,4 +1,4 @@
 import { config } from 'dotenv';
 config();
 
-import '@/ai/flows/suggest-meal-options.ts';
+import '@/ai/flows/diagnose-computer-problem.ts';

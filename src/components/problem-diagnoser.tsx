@@ -4,43 +4,43 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { suggestMealOptions, type SuggestMealOptionsOutput } from "@/ai/flows/suggest-meal-options";
+import { diagnoseComputerProblem, type DiagnoseComputerProblemOutput } from "@/ai/flows/diagnose-computer-problem";
 
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Loader2 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
 const formSchema = z.object({
-  dietaryPreferences: z.string().min(10, {
-    message: "Por favor, descreva suas preferências com pelo menos 10 caracteres.",
+  problemDescription: z.string().min(10, {
+    message: "Por favor, descreva o problema com pelo menos 10 caracteres.",
   }),
 });
 
-export function MenuSuggester() {
-  const [suggestion, setSuggestion] = useState<SuggestMealOptionsOutput | null>(null);
+export function ProblemDiagnoser() {
+  const [result, setResult] = useState<DiagnoseComputerProblemOutput | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const { toast } = useToast();
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      dietaryPreferences: "",
+      problemDescription: "",
     },
   });
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     setIsLoading(true);
-    setSuggestion(null);
+    setResult(null);
     try {
-      const result = await suggestMealOptions(values);
-      setSuggestion(result);
+      const response = await diagnoseComputerProblem(values);
+      setResult(response);
     } catch (error) {
       console.error(error);
       toast({
-        title: "Erro ao gerar sugestão",
+        title: "Erro ao gerar diagnóstico",
         description: "Ocorreu um erro ao tentar se comunicar com a IA. Tente novamente mais tarde.",
         variant: "destructive",
       });
@@ -56,13 +56,13 @@ export function MenuSuggester() {
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
             <FormField
               control={form.control}
-              name="dietaryPreferences"
+              name="problemDescription"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="font-semibold">Descreva sua necessidade</FormLabel>
+                  <FormLabel className="font-semibold">Descreva o problema</FormLabel>
                   <FormControl>
                     <Textarea
-                      placeholder="Ex: Equipe de 20 pessoas, com 2 vegetarianos e 1 com intolerância a lactose. Preferência por comida mineira, sem pimenta."
+                      placeholder="Ex: Meu computador não liga, a tela fica preta, mas a luz do gabinete acende."
                       {...field}
                       rows={4}
                       className="text-base"
@@ -76,10 +76,10 @@ export function MenuSuggester() {
               {isLoading ? (
                 <>
                   <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                  Gerando Sugestões...
+                  Diagnosticando...
                 </>
               ) : (
-                "Gerar Sugestão de Cardápio"
+                "Obter Diagnóstico Rápido"
               )}
             </Button>
           </form>
@@ -89,15 +89,21 @@ export function MenuSuggester() {
             <div className="mt-6 p-4 border rounded-md bg-muted/50">
                 <div className="flex items-center">
                     <Loader2 className="mr-2 h-5 w-5 animate-spin text-primary" />
-                    <h3 className="font-headline text-lg">Analisando seu pedido e criando o cardápio perfeito...</h3>
+                    <h3 className="font-headline text-lg">Analisando os sintomas do seu equipamento...</h3>
                 </div>
             </div>
         )}
 
-        {suggestion && (
-          <div className="mt-6 p-6 border-2 border-primary/50 rounded-lg bg-background">
-            <h3 className="font-headline text-xl mb-4 text-primary">Nossa Sugestão de Cardápio:</h3>
-            <div className="prose prose-sm max-w-none text-foreground whitespace-pre-wrap">{suggestion.mealOptions}</div>
+        {result && (
+          <div className="mt-6 space-y-4">
+            <div className="p-6 border-2 border-primary/50 rounded-lg bg-background">
+              <h3 className="font-headline text-xl mb-2 text-primary">Diagnóstico Preliminar:</h3>
+              <p className="whitespace-pre-wrap">{result.diagnosis}</p>
+            </div>
+             <div className="p-6 border rounded-lg bg-muted/50">
+              <h3 className="font-headline text-xl mb-2 text-foreground">Recomendação:</h3>
+              <p className="whitespace-pre-wrap">{result.recommendation}</p>
+            </div>
           </div>
         )}
       </CardContent>

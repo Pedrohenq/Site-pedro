@@ -12,21 +12,20 @@ import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 import {
-  UtensilsCrossed,
-  GlassWater,
-  Package,
+  Laptop,
+  Wrench,
+  Code,
   MapPin,
   Phone,
   Mail,
   Building,
   FileText,
   Briefcase,
-  Globe,
   Calendar,
   Info,
   DollarSign
 } from "lucide-react";
-import { MenuSuggester } from "@/components/menu-suggester";
+import { ProblemDiagnoser } from "@/components/problem-diagnoser";
 
 export default function Home() {
   const heroImage = PlaceHolderImages.find((img) => img.id === "hero-background");
@@ -34,22 +33,22 @@ export default function Home() {
 
   const services = [
     {
-      icon: <UtensilsCrossed className="h-10 w-10 text-primary" />,
-      title: "Fornecimento de Alimentos",
+      icon: <Wrench className="h-10 w-10 text-primary" />,
+      title: "Manutenção de Hardware",
       description:
-        "Soluções completas de refeições preparadas para o dia a dia da sua empresa, com qualidade e sabor inigualáveis.",
+        "Diagnóstico e reparo de computadores, notebooks e periféricos. Upgrade de componentes para melhor desempenho.",
     },
     {
-      icon: <GlassWater className="h-10 w-10 text-primary" />,
-      title: "Comércio de Bebidas",
+      icon: <Laptop className="h-10 w-10 text-primary" />,
+      title: "Suporte de Software",
       description:
-        "Ampla variedade de bebidas, desde água e sucos naturais até refrigerantes, para complementar suas refeições.",
+        "Instalação e configuração de sistemas operacionais e softwares. Remoção de vírus e otimização de sistema.",
     },
     {
-      icon: <Package className="h-10 w-10 text-primary" />,
-      title: "Produtos Alimentícios Diversos",
+      icon: <Code className="h-10 w-10 text-primary" />,
+      title: "Desenvolvimento e Programação",
       description:
-        "Oferecemos uma gama de produtos alimentícios para atender necessidades específicas do seu negócio.",
+        "Criação de scripts e soluções de software personalizadas para automatizar tarefas e otimizar processos.",
     },
   ];
 
@@ -75,7 +74,7 @@ export default function Home() {
      {
       icon: <Building className="h-5 w-5 text-primary" />,
       label: "Nome Empresarial",
-      value: "64.096.715 PEDRO HENRIQUE DA SILVA",
+      value: "PEDRO HENRIQUE DA SILVA",
     },
     {
       icon: <FileText className="h-5 w-5 text-primary" />,
@@ -90,7 +89,7 @@ export default function Home() {
     {
       icon: <Info className="h-5 w-5 text-primary" />,
       label: "Situação Cadastral",
-      value: "ATIVA desde 17/12/2025",
+      value: "ATIVA",
     },
     {
       icon: <DollarSign className="h-5 w-5 text-primary" />,
@@ -100,7 +99,7 @@ export default function Home() {
     {
       icon: <Briefcase className="h-5 w-5 text-primary" />,
       label: "Atividade Principal",
-      value: "Fornecimento de alimentos preparados",
+      value: "Programação e manutenção de computadores e periféricos",
     },
   ]
 
@@ -123,17 +122,17 @@ export default function Home() {
               data-ai-hint={heroImage.imageHint}
             />
           )}
-          <div className="absolute inset-0 bg-black/50" />
+          <div className="absolute inset-0 bg-black/60" />
           <div className="relative z-10 container px-4 md:px-6">
             <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl font-headline text-shadow-lg">
-              Alimentação Corporativa de Qualidade
+              Soluções Completas em TI
             </h1>
             <p className="mt-4 max-w-2xl mx-auto text-lg md:text-xl text-shadow">
-              Soluções completas em alimentos, bebidas e produtos para a sua empresa em Belo Horizonte.
+              Manutenção, programação e suporte técnico para seus computadores e periféricos em Belo Horizonte.
             </p>
             <div className="mt-8">
               <Button asChild size="lg">
-                <Link href="#contact">Entre em Contato</Link>
+                <Link href="#contact">Solicite um Orçamento</Link>
               </Button>
             </div>
           </div>
@@ -147,7 +146,7 @@ export default function Home() {
                 Nossos Serviços
               </h2>
               <p className="mt-3 max-w-2xl mx-auto text-lg text-muted-foreground">
-                Oferecemos tudo que sua empresa precisa para uma alimentação de excelência.
+                Tudo o que você precisa para manter sua tecnologia funcionando perfeitamente.
               </p>
             </div>
             <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
@@ -174,18 +173,18 @@ export default function Home() {
                 Sobre Nós
               </h2>
               <p className="mt-3 max-w-2xl mx-auto text-lg text-muted-foreground">
-                Confiança e profissionalismo no fornecimento de alimentos.
+                Confiança e expertise em tecnologia.
               </p>
             </div>
             <div className="grid gap-12 md:grid-cols-2 md:gap-16 items-center">
               <div className="space-y-4">
                 <h3 className="text-2xl font-bold font-headline text-primary">Nossa Missão</h3>
                 <p className="text-muted-foreground">
-                  Nossa missão é fornecer soluções alimentares de alta qualidade que promovam o bem-estar e a produtividade no ambiente corporativo. Buscamos a excelência em cada prato, garantindo a satisfação dos nossos clientes.
+                  Nossa missão é fornecer soluções de TI eficientes e confiáveis, garantindo a performance e a segurança dos equipamentos de nossos clientes através de um serviço técnico de excelência.
                 </p>
                 <h3 className="text-2xl font-bold font-headline text-primary mt-6">Nossos Diferenciais</h3>
                 <p className="text-muted-foreground">
-                  Combinamos ingredientes frescos e selecionados com um serviço logístico impecável. Nossa flexibilidade para criar cardápios personalizados e nosso compromisso com a pontualidade nos destacam no mercado de Belo Horizonte.
+                  Combinamos conhecimento técnico aprofundado com um atendimento ao cliente transparente e ágil. Nossa capacidade de diagnosticar e resolver problemas complexos, além do desenvolvimento de soluções customizadas, nos destaca no mercado de Belo Horizonte.
                 </p>
               </div>
               <div className="relative h-80 w-full rounded-lg shadow-2xl overflow-hidden">
@@ -204,7 +203,7 @@ export default function Home() {
             <Card className="mt-16 shadow-lg">
               <CardHeader>
                 <CardTitle className="font-headline text-2xl">Informações Legais</CardTitle>
-                <CardDescription>Transparência e credibilidade para nossos parceiros.</CardDescription>
+                <CardDescription>Transparência e credibilidade para nossos clientes e parceiros.</CardDescription>
               </CardHeader>
               <CardContent className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 {legalInfo.map((info) => (
@@ -221,18 +220,18 @@ export default function Home() {
           </div>
         </section>
 
-        {/* AI Menu Suggester Section */}
+        {/* AI Problem Diagnoser Section */}
         <section id="suggester" className="py-16 md:py-24 bg-card">
           <div className="container px-4 md:px-6">
              <div className="text-center mb-12">
               <h2 className="text-3xl font-bold tracking-tight sm:text-4xl font-headline">
-                Assistente de Cardápio com IA
+                Diagnóstico Rápido com IA
               </h2>
               <p className="mt-3 max-w-3xl mx-auto text-lg text-muted-foreground">
-                Não sabe o que pedir? Descreva as preferências, restrições ou o tipo de evento da sua equipe e nossa IA criará um cardápio personalizado.
+                Seu computador está com problemas? Descreva os sintomas e nossa IA fornecerá um pré-diagnóstico e os próximos passos recomendados.
               </p>
             </div>
-            <MenuSuggester />
+            <ProblemDiagnoser />
           </div>
         </section>
 
@@ -244,7 +243,7 @@ export default function Home() {
                 Entre em Contato
               </h2>
               <p className="mt-3 max-w-2xl mx-auto text-lg text-secondary-foreground/80">
-                Estamos prontos para atender sua empresa.
+                Estamos prontos para resolver seus problemas de tecnologia.
               </p>
             </div>
             <div className="grid grid-cols-1 gap-8 md:grid-cols-3">

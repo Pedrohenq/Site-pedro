@@ -1,7 +1,7 @@
 "use client"
 
 import Link from "next/link";
-import { Menu, Utensils } from "lucide-react";
+import { Menu, Terminal } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { useState } from "react";
@@ -10,7 +10,7 @@ import { cn } from "@/lib/utils";
 const navLinks = [
   { href: "#services", label: "Serviços" },
   { href: "#about", label: "Sobre" },
-  { href: "#suggester", label: "Sugestão IA" },
+  { href: "#suggester", label: "Diagnóstico IA" },
   { href: "#contact", label: "Contato" },
 ];
 
@@ -21,9 +21,9 @@ export function Header() {
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 items-center">
         <Link href="/" className="mr-auto flex items-center gap-2">
-          <Utensils className="h-6 w-6 text-primary" />
+          <Terminal className="h-6 w-6 text-primary" />
           <span className={cn("font-bold font-headline text-lg hidden sm:inline-block")}>
-            Belo Alimentos
+            PHS Tech
           </span>
         </Link>
         
@@ -47,8 +47,8 @@ export function Header() {
             </SheetTrigger>
             <SheetContent side="right">
               <Link href="/" className="mr-auto flex items-center gap-2 mb-8">
-                <Utensils className="h-6 w-6 text-primary" />
-                <span className="font-bold font-headline text-lg">Belo Alimentos</span>
+                <Terminal className="h-6 w-6 text-primary" />
+                <span className="font-bold font-headline text-lg">PHS Tech</span>
               </Link>
               <nav className="flex flex-col gap-6">
                 {navLinks.map((link) => (
