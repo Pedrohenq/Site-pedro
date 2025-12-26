@@ -22,6 +22,9 @@ import {
   FileText,
   Briefcase,
   Globe,
+  Calendar,
+  Info,
+  DollarSign
 } from "lucide-react";
 import { MenuSuggester } from "@/components/menu-suggester";
 
@@ -54,7 +57,7 @@ export default function Home() {
     {
       icon: <MapPin className="h-8 w-8 text-primary" />,
       title: "Endereço",
-      info: "R. José Gomes Domingues, 111 - Jaqueline, Belo Horizonte - MG, 31.748-075",
+      info: "JOSE GOMES DOMINGUES, N/A - N/A, Belo Horizonte - MG, 31.748-075",
     },
     {
       icon: <Phone className="h-8 w-8 text-primary" />,
@@ -71,18 +74,28 @@ export default function Home() {
   const legalInfo = [
      {
       icon: <Building className="h-5 w-5 text-primary" />,
-      label: "Razão Social",
-      value: "Pedro Henrique da Silva",
+      label: "Nome Empresarial",
+      value: "64.096.715 PEDRO HENRIQUE DA SILVA",
     },
     {
       icon: <FileText className="h-5 w-5 text-primary" />,
       label: "CNPJ",
-      value: "63.038.758/0001-39",
+      value: "64.096.715/0001-72",
     },
     {
-      icon: <Globe className="h-5 w-5 text-primary" />,
-      label: "Localização",
-      value: "Belo Horizonte - MG",
+      icon: <Calendar className="h-5 w-5 text-primary" />,
+      label: "Data de Abertura",
+      value: "17/12/2025",
+    },
+    {
+      icon: <Info className="h-5 w-5 text-primary" />,
+      label: "Situação Cadastral",
+      value: "ATIVA desde 17/12/2025",
+    },
+    {
+      icon: <DollarSign className="h-5 w-5 text-primary" />,
+      label: "Capital Social",
+      value: "R$ 1.000,00",
     },
     {
       icon: <Briefcase className="h-5 w-5 text-primary" />,
